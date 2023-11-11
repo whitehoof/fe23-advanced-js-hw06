@@ -6,7 +6,7 @@ const findByIp = async() => {
 		
 		const data1 = await fetch('https://api.ipify.org/?format=json')
 			.then(myIp => myIp.json());
-		const data2 = await fetch(`https://ip-api.com/json/${data1.ip}?fields=status,message,continent,country,regionName,city,district`)
+		const data2 = await fetch(`http://ip-api.com/json/${data1.ip}?fields=status,message,continent,country,regionName,city,district`)
 			.then(data => data.json());
 		console.log(data2);
 		const {continent, country, regionName, city, district} = data2;
