@@ -1,14 +1,14 @@
 .lds-ripple {
 	margin: 0 auto;
 	
-	display: block;
-	position: relative;
-	width: 240px;
-	height: 240px;
+	display: none;
+	position: absolute;
+	width: 90vmin;
+	height: 90vmin;
 
 	& div {
 		position: absolute;
-		border: 1px solid #000;
+		border: 2px solid #fff;
 		opacity: 1;
 		border-radius: 50%;
 		animation: lds-ripple 3s cubic-bezier(0, 0.2, 0.8, 1) infinite;
@@ -21,22 +21,22 @@
 
 @keyframes lds-ripple {
 	0% {
-		top: 108px;
-		left: 108px;
+		top: 45vmin;
+		left: 45vmin;
 		width: 0;
 		height: 0;
 		opacity: 0;
 	}
 	4.9% {
-		top: 108px;
-		left: 108px;
+		top: 45vmin;
+		left: 45vmin;
 		width: 0;
 		height: 0;
 		opacity: 0;
 	}
 	5% {
-		top: 108px;
-		left: 108px;
+		top: 45vmin;
+		left: 45vmin;
 		width: 0;
 		height: 0;
 		opacity: 1;
@@ -44,8 +44,8 @@
 	100% {
 		top: 0px;
 		left: 0px;
-		width: 216px;
-		height: 216px;
+		width: 90vmin;
+		height: 90vmin;
 		opacity: 0;
 	}
 }

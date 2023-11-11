@@ -1,10 +1,52 @@
+html {
+	height: 100%;
+}
+
 body {
-	min-height: 100vh;
-	background:	linear-gradient(165deg, rgb(100,200,255), rgb(255,160,255));
+	@include default-font;
+	height: 100%;
+	background: linear-gradient(to bottom, #000 30%, #180000);
 }
 
 .container {
-	padding: 0 $ui-gap-m;
-	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	padding: $ui-gap-m;
+	margin: auto;
+	height: 100%;
 	max-width: $ui-breakpoint-s;
+}
+
+#find {
+	display: block;
+	width: 50vw;
+	height: 16vh;
+	border: 2px solid $ui-accent;
+	border-radius: 8vh;
+	background-color: $ui-dark;
+	color: $ui-light;
+	font-weight: bold;
+	font-size: 7vmin;
+}
+
+#search-result {
+	padding: 2em 1em 0;
+	
+	font-weight: 100;
+	color: $ui-light;
+	
+	& span {
+		font-weight: 900;
+		color: $ui-accent;
+	}
+}
+
+td {
+	padding: 1vmin;
+}
+
+tr td:first-child {
+	text-align: right;
 }

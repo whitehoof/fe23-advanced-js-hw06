@@ -1,23 +1,32 @@
-import {Card} from "./Classes/Card.js";
-
-const showPosts = async() => {
+const findByIp = async() => {
 	try {
-		const users = await fetch('https://ajax.test-danit.com/api/json/users')
-			.then(dataU => dataU.json());
-		const posts = await fetch('https://ajax.test-danit.com/api/json/posts')
-			.then(dataP => dataP.json());
+		document.querySelector('.lds-ripple').style.display = 'block';
+		const SR = document.querySelector('#search-result');
+		SR.innerHTML = '';
 		
-		document.querySelector('.lds-ripple').remove();
+		const data1 = await fetch('https://api.ipify.org/?format=json')
+			.then(myIp => myIp.json());
+		const data2 = await fetch(`http://ip-api.com/json/${data1.ip}?fields=status,message,continent,country,regionName,city,district`)
+			.then(data => data.json());
+		console.log(data2);
+		const {continent, country, regionName, city, district} = data2;
 		
-		posts.forEach( post => {
-			const {name, email} = users.find( el => el.id === post.userId);
-			const card= new Card(post.id, name, email, post.title, post.body).render();
-		});
+		SR.innerHTML = `
+<table>
+<tr><td>continent:</td><td><span>${continent.length ? continent : "?"}</span></td></tr>
+<tr><td>country:</td><td><span>${country.length ? country : "?"}</span></td></tr>
+<tr><td>region:</td><td><span>${regionName.length ? regionName : "?"}</span></td></tr>
+<tr><td>city:</td><td><span>${city.length ? city : "?"}</span></td></tr>
+<tr><td>district:</td><td><span>${district.length ? district : "?"}</span></td></tr>
+</table>`;
 		
-		document.querySelector('.footer').style.display = 'block';
+		document.querySelector('.lds-ripple').style.display = 'none';
+		
 	} catch (err) {
-		console.warn(err)
+		console.warn(err);
 	}
 }
 
-showPosts();
+
+
+document.querySelector('#find').addEventListener('click', findByIp);
