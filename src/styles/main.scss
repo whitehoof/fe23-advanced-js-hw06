@@ -1,0 +1,19 @@
+//********************* import
+// @import "node_modules/animate.css/animate";
+
+//********************* mixins
+@import "_mixins/general";
+
+//********************* global
+@import "global/reset";
+@import "global/fonts";
+@import "global/preloader";
+@import "global/variables";
+@import "global/base";
+
+//********************* other
+
+//********************* block
+@import "block/header";
+@import "block/cards";
+@import "block/footer";
